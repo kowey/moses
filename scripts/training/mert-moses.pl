@@ -37,7 +37,11 @@
 # Original version by Philipp Koehn
 
 use FindBin qw($Bin);
+use File::Basename;
 my $SCRIPTS_ROOTDIR = $Bin;
+if ($SCRIPTS_ROOTDIR eq '') {
+  $SCRIPTS_ROOTDIR = dirname(__FILE__);
+}
 $SCRIPTS_ROOTDIR =~ s/\/training$//;
 $SCRIPTS_ROOTDIR = $ENV{"SCRIPTS_ROOTDIR"} if defined($ENV{"SCRIPTS_ROOTDIR"});
 
