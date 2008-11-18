@@ -39,6 +39,7 @@
 use FindBin qw($Bin);
 use File::Basename;
 use File::Spec::Functions;
+
 my $SCRIPTS_ROOTDIR = $Bin;
 if ($SCRIPTS_ROOTDIR eq '') {
   $SCRIPTS_ROOTDIR = dirname(__FILE__);
