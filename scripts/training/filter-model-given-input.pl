@@ -35,11 +35,14 @@ if (-d $dir && ! -e "$dir/info") {
 if (-d $dir) {
     my @INFO = `cat $dir/info`;
     chop(@INFO);
-    if($INFO[0] ne $config 
-       || ($INFO[1] ne $input && 
-	   $INFO[1].".tagged" ne $input)) {
+    if ($INFO[0] ne $config) {
       print STDERR "WARNING: directory exists but does not match parameters:\n";
-      print STDERR "  ($INFO[0] ne $config || $INFO[1] ne $input)\n";
+      print STDERR "  ($INFO[0] ne $config)\n";
+      exit 1;
+    }
+    if ($INFO[1] ne $input && $INFO[1].".tagged" ne $input) {
+      print STDERR "WARNING: directory exists but does not match parameters:\n";
+      print STDERR "  ($INFO[1] ne $input)\n";
       exit 1;
     }
     print STDERR "The filtered model was ready in $dir, not doing anything.\n";
